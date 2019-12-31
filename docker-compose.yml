@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  app:
+    container_name: node-chess
+    restart: always
+    build: .
+    ports:
+      - '8080:8080'
+    links:
+      - mongo
+#    networks:
+#      - mongonetwork
+
+  mongo:
+    container_name: mongo
+    image: mongo:3.2
+    hostname: mongo
+    ports:
+      - '27017:27017'
+#    command: mongod --bind_ip 0.0.0.0
+#    networks:
+#      - mongonetwork
+
+#networks:
+#  mongonetwork:
+#   driver: bridge
